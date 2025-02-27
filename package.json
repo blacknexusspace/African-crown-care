@@ -1,0 +1,15 @@
+{
+  "name": "african-crown-care",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:dev1": "shopify theme dev --theme 148947501315 --store africancrowncare.myshopify.com"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^12.4.2"
+  }
+}
