@@ -1,0 +1,52 @@
+{%  schema  %}
+
+{
+    "name": "Services",
+    "settings": [
+    {
+        "type": "text",
+        "label": "Heading Text",
+        "id": "services_heading",
+        "default":"Our Services"
+
+    }
+    
+],
+
+"blocks": [
+    
+    {
+       "type": "service",
+       "name":"services",
+
+       "settings": [
+        {
+        "type": "image_picker",
+        "id": "service_image",
+        "label": "Image"
+       },
+       {
+        "type": "text",
+        "id": "service_offered",
+        "label":"Service"
+       },
+       {
+        "type": "richtext",
+        "id": "service_description",
+        "label": "Service Description"
+       }
+    ]
+    }
+],
+
+
+"presets": [
+    {
+        "name": "Services"
+    }
+]
+
+}
+
+
+{% endschema %} 
