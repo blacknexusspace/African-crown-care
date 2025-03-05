@@ -1,3 +1,90 @@
+<style>
+.placeholder-svg {
+    width: 500px;
+    height: 500px;
+}
+
+.image{
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card_container{
+    background-color: #f6f3ee;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.button-color{
+    background-color: #800017;
+ 
+    
+}
+.button{
+    box-shadow: none !important;
+}
+
+
+
+@media only screen and (min-width: 600px){
+ .services_container{
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+   
+   
+}
+
+
+}
+
+
+
+</style>
+<div class="services_container page-width">
+    <div>
+    <h2>{{ section.settings.services_heading }}</h2>
+    </div>  
+        <div class="services">
+        {% for block in section.blocks %}
+            <div class="card_container">
+            <div>
+            {% if block.settings.service_image != blank %}
+                <img src="{{ block.settings.service_image | img_url: '500x500' }}" width="500" height="500" alt="Service Image" class="image">
+            {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+        {% endif %}
+           </div>
+           
+              
+            <div>
+                <h3>{{ block.settings.service_offered }}</h3>
+            </div>
+            <div>
+                <p>
+                    {{ block.settings.service_description }}
+                </p>
+            </div>
+            <div>
+                <button class="button button-color">Learn More</button>
+            </div>
+        </div>
+            {% endfor %}
+
+        </div>
+
+</div>
+
+
+
+
+
 {%  schema  %}
 
 {
@@ -5,11 +92,16 @@
     "settings": [
     {
         "type": "text",
-        "label": "Heading Text",
+        "label": "Heading",
         "id": "services_heading",
         "default":"Our Services"
 
-    }
+    },
+    {
+        "type": "color_background",
+        "label": "Cards color",
+        "id": "card_color"
+   }
     
 ],
 
@@ -23,7 +115,7 @@
         {
         "type": "image_picker",
         "id": "service_image",
-        "label": "Image"
+        "label": "Service Image"
        },
        {
         "type": "text",
