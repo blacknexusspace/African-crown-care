@@ -6,13 +6,25 @@
 
 .image{
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 30px;
+    height: auto;
+    width: 100%;
+   
 }
 
 .card_container{
     background-color: #f6f3ee;
-    padding: 20px;
+    padding: 15px;
     border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures content is evenly spaced */
+    height: 100%; 
+    margin-bottom: 30px;
+}
+
+.service_description {
+    flex-grow: 1; /* Pushes the button down */
 }
 
 .button-color{
@@ -22,6 +34,9 @@
 }
 .button{
     box-shadow: none !important;
+}
+.subheading{
+    text-align: center;
 }
 
 
@@ -49,18 +64,20 @@
 </style>
 <div class="services_container page-width">
     <div>
-    <h2>{{ section.settings.services_heading }}</h2>
+    <h1>{{ section.settings.services_heading }}</h1>
     </div>  
+  
         <div class="services">
         {% for block in section.blocks %}
             <div class="card_container">
-            <div>
+           
             {% if block.settings.service_image != blank %}
-                <img src="{{ block.settings.service_image | img_url: '500x500' }}" width="500" height="500" alt="Service Image" class="image">
+                <img src="{{ block.settings.service_image | img_url: '500x500' }}" width="500" height="480" alt="Service Image" class="image">
             {% else %}
             {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
         {% endif %}
-           </div>
+        
+          
            
               
             <div>
@@ -91,17 +108,12 @@
     "name": "Services",
     "settings": [
     {
-        "type": "text",
+        "type": "richtext",
         "label": "Heading",
         "id": "services_heading",
-        "default":"Our Services"
+        "default":"<p>Our Services</p>"
 
-    },
-    {
-        "type": "color_background",
-        "label": "Cards color",
-        "id": "card_color"
-   }
+    }
     
 ],
 
@@ -118,9 +130,10 @@
         "label": "Service Image"
        },
        {
-        "type": "text",
+        "type": "richtext",
         "id": "service_offered",
-        "label":"Service"
+        "label": "Service",
+        "default":"<p>Service</p>"
        },
        {
         "type": "richtext",
